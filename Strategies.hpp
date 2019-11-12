@@ -77,18 +77,16 @@ bool Strategy_t<Strategy>::payBills(const unsigned int & currMonth,
       // COMPLETE BELOW:
       // COMPUTE THE TOTAL PENALTY IN VARIABLE  <fee> AS
       // 35 + round(0.1 * days overdue * amount due) / 100
-      fee = 35 + round((0.1 * someBill.daysOverdue(currMonth, currDay)) * someBill.amount_due_);
+      fee = 35 + round(0.1* (someBill.daysOverdue(currMonth, currDay))*(someBill.amount_due_)) / 100;
     }
 
     if( someBill.amount_due_ + fee <= myChecking_.amount_left_ ) {
-      myChecking_.amount_left_ -= someBill.amount_due_ + fee;Bank     myChecking_;
-  Strategy allBills_;
-  double   amount_penalties_;
+      myChecking_.amount_left_ -= someBill.amount_due_ + fee;
       allBills_.pop();
       amount_penalties_ += fee;
     }
     else
-      break;
+      break; 
   }
   return (allBills_.size() == 0);
 }
@@ -138,11 +136,10 @@ void Strategy_t<Strategy>::readFile( const std::string & filename )
 
         getline( lineStream, cell, '\n' );
         unsigned int currDay = stoul( cell );
+
 	// COMPLETE BELOW:
 	// CALL THE FUNCTION MEMBER TO PAY AS MANY BILLS AS POSSIBLE
-  //  while (myChecking_.amount_left_ >= newBill.amount_due_) {
-    //  payBills(currMonth, currDay);
-  //}
+  payBills(currMonth, currDay);
       }
     }
   }
