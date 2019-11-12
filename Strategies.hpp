@@ -62,7 +62,7 @@ Strategy_t<Strategy>::Strategy_t( const std::string & name,
   : myChecking_( name, starting, salary ), amount_penalties_( 0.0 )
 {}
 
-// This function is incomplete. It needs some lines of code.
+
 template<class Strategy>
 bool Strategy_t<Strategy>::payBills(const unsigned int & currMonth,
 				    const unsigned int & currDay) {
@@ -74,9 +74,7 @@ bool Strategy_t<Strategy>::payBills(const unsigned int & currMonth,
     someBill    = peek( allBills_ );
     double fee = 0.0;
     if( someBill.isOverdue( currMonth, currDay ) ) {
-      // COMPLETE BELOW:
-      // COMPUTE THE TOTAL PENALTY IN VARIABLE  <fee> AS
-      // 35 + round(0.1 * days overdue * amount due) / 100
+    //fee is total penalty
       fee = 35 + round(0.1* (someBill.daysOverdue(currMonth, currDay))*(someBill.amount_due_)) / 100;
     }
 
@@ -86,12 +84,12 @@ bool Strategy_t<Strategy>::payBills(const unsigned int & currMonth,
       amount_penalties_ += fee;
     }
     else
-      break; 
+      break;
   }
   return (allBills_.size() == 0);
 }
 
-// This function is incomplete. You need to write few lines of code.
+
 template<class Strategy>
 void Strategy_t<Strategy>::readFile( const std::string & filename )
 {
@@ -119,9 +117,7 @@ void Strategy_t<Strategy>::readFile( const std::string & filename )
         getline( lineStream, cell, '\n' );
         newBill.due_day_ = stoul( cell );
 
-	// COMPLETE BELOW:
-	// ADD <newBill> TO THE STACK/QUEUE OF <allBills_>
-  allBills_.push(newBill);
+        allBills_.push(newBill); //pushes bills into stack/queue
       }
 
       else if( cell == "paycheck" ) {
@@ -137,9 +133,7 @@ void Strategy_t<Strategy>::readFile( const std::string & filename )
         getline( lineStream, cell, '\n' );
         unsigned int currDay = stoul( cell );
 
-	// COMPLETE BELOW:
-	// CALL THE FUNCTION MEMBER TO PAY AS MANY BILLS AS POSSIBLE
-  payBills(currMonth, currDay);
+        payBills(currMonth, currDay); //uses the paybill function to pay all the bills
       }
     }
   }

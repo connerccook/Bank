@@ -6,18 +6,18 @@
 ** Member function definitions
 ************************************************/
 
-// ADD IMPLEMENTATION OF CONSTRUCTOR FOR CLASS Bill
+
 Bill::Bill(const std::string & name,
 		const double & dues,
 		const unsigned int & month,
-		const unsigned int & day) {}
+		const unsigned int & day) {} //BILL default constructor
 
 
 bool Bill::isOverdue(const unsigned int &currMonth,
 		     const unsigned int& currDay ) {
-if(due_month_ < currMonth)
+if(due_month_ < currMonth) //if due month is less than current month -> true
 		return true;
-if (due_month_ == currMonth) {
+if (due_month_ == currMonth) { //if due month is the same as current month, check if the due day is less than current date
 	if (due_day_ < currDay) {
 		return true;
 	}
