@@ -117,7 +117,7 @@ void Strategy_t<Strategy>::readFile( const std::string & filename )
         getline( lineStream, cell, '\n' );
         newBill.due_day_ = stoul( cell );
 
-        allBills_.push(newBill); //pushes bills into stack/queue
+        allBills_.push(newBill); //pushes bills into stack/queue strategy
       }
 
       else if( cell == "paycheck" ) {
@@ -133,7 +133,7 @@ void Strategy_t<Strategy>::readFile( const std::string & filename )
         getline( lineStream, cell, '\n' );
         unsigned int currDay = stoul( cell );
 
-        payBills(currMonth, currDay); //uses the paybill function to pay all the bills
+        payBills(currMonth, currDay); //if data.txt says pay, use the paybill function to pay all the bills
       }
     }
   }
