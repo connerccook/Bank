@@ -10,7 +10,7 @@
 Bill::Bill(const std::string & name,
 		const double & dues,
 		const unsigned int & month,
-		const unsigned int & day) {} //BILL default constructor
+		const unsigned int & day) {} //Bill default constructor
 
 
 bool Bill::isOverdue(const unsigned int &currMonth,
@@ -23,7 +23,7 @@ if (due_month_ == currMonth) { //if due month is the same as current month, chec
 	}
 }
 
-return false;
+return false; //if no if statements occur then false
 }
 
 // This function member implementation is complete
